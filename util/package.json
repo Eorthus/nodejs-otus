@@ -1,0 +1,10 @@
+{
+  "name": "tree-function",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^7.0.1"
+  }
+}
