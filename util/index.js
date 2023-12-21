@@ -1,7 +1,7 @@
 const fs = require('fs');
 const commandLineUsage = require('command-line-usage')
 const commandLineArgs = require('command-line-args')
-const treeFunction = require('./module');
+const { treeFunction } = require('./module');
 
 const optionList = [
     {
