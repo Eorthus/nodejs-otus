@@ -1,6 +1,24 @@
 const { treeFunction, setLevelLinesHandler, printPathHandler } = require('./module')
+const mock = require('mock-fs')
+
+
 
 describe('module test', () => {
+
+    beforeEach(() => {
+        mock({
+            'path/to/fake/dir': {
+                'some-file.txt': 'file content here',
+                'empty-dir': {/** empty directory */ }
+            },
+            'path/to/some.png': Buffer.from([8, 6, 7, 5, 3, 0, 9]),
+            'some/other/path': {/** another empty directory */ }
+        });
+    })
+
+    afterEach(() => mock.restore())
+
+
     test('functions exists', async () => {
         expect(typeof treeFunction === 'function').toBe(true)
 
@@ -30,22 +48,22 @@ describe('module test', () => {
         expect(console.log).toHaveBeenCalledTimes(0);
 
         //depth exists with file
-        await printPathHandler('./', '.gitignore', 1, 1)
+        await printPathHandler('./', 'path/to/some.png', 1, 1)
 
-        expect(console.log).toHaveBeenCalledWith('|_', '.gitignore');
+        expect(console.log).toHaveBeenCalledWith('|_', 'path/to/some.png');
 
         //depth exists with directory
-        await printPathHandler('./', 'coverage', 2, 1)
+        await printPathHandler('./', 'path/to/fake/dir', 2, 1)
 
-        expect(console.log).toHaveBeenCalledWith('  |__', 'clover.xml')
+        expect(console.log).toHaveBeenCalledWith('  |__', 'empty-dir')
     })
 
     test('treeFunction work', async () => {
         console.log = jest.fn();
 
-        await treeFunction('./')
+        await treeFunction('path/to/fake/dir')
 
-        expect(console.log).toHaveBeenCalledWith('.');
+        expect(console.log).toHaveBeenCalledWith('dir');
 
     })
 })
