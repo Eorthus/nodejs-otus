@@ -45,4 +45,4 @@ const treeFunction = (folderPath, depth) => {
     })
 }
 
-module.exports = treeFunction;
+module.exports = { treeFunction, setLevelLinesHandler, printPathHandler };
