@@ -19,4 +19,9 @@ describe('user test', () => {
         // import api user
         // expect(user.role==='some').toBe(true)
     })
+
+    test('user patch', async () => {
+        // patch api user
+        // expect(user.somefield==='new some').toBe(true)
+    })
 })
