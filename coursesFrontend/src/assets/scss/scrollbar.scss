@@ -1,0 +1,18 @@
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  @apply tw-rounded-xl tw-bg-grey-extra-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply tw-rounded-xl tw-bg-grey-normal;
+}
+
+::-webkit-scrollbar-track {
+  @apply tw-rounded-xl tw-bg-grey-extra-light;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.grey.normal') theme('colors.grey.extra-light');
+}

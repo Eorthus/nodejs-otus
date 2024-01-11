@@ -1,0 +1,58 @@
+@import 'reset.scss';
+@import 'tailwind.scss';
+@import 'scrollbar.scss';
+@import '@/assets/scss/fonts.scss';
+@import 'typography.scss';
+@import 'flex.scss';
+
+body {
+  @apply font-normal-14 tw-overflow-hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.isLoading {
+  opacity: 0.5;
+  filter: blur(1px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.scroll-padding {
+  scrollbar-gutter: stable;
+}
+
+.text-ellipsis {
+  white-space: nowrap; /* Запрещаем перенос строк */
+  overflow: hidden; /* Обрезаем все, что не помещается в область */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.hyphens {
+  hyphens: auto;
+  word-wrap: break-word;
+}
+
+.main-font {
+  font-family: Nominee;
+}
+
+.ul-reset {
+  padding-left: 0 !important;
+  list-style: none;
+}
+
+
+.indicator {
+  border: 1px solid theme('colors.red.normal');
+  background-clip: content-box;
+  padding: 2px;
+  width: 12px;
+  height: 12px;
+  top: -2px;
+  right: -2px;
+  box-shadow: inset 0 0 0 2px theme('colors.white');
+  @apply tw-rounded-full tw-bg-red-normal;
+}
