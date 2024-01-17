@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "65a683fb14393c319e7526b2"
+  },
+  "id": 1,
+  "login": "admin",
+  "password": "0000",
+  "token": "to45cfd-dfdd453244566",
+  "role": "admin",
+  "ownCourses": [],
+  "availabelCourses": []
+},
+{
+  "_id": {
+    "$oid": "65a683fb14393c319e7526b3"
+  },
+  "id": 2,
+  "login": "author",
+  "password": "0001",
+  "token": "to45cfd-dfdsdfm43244566",
+  "role": "author",
+  "ownCourses": [],
+  "availabelCourses": []
+},
+{
+  "_id": {
+    "$oid": "65a683fb14393c319e7526b4"
+  },
+  "id": 3,
+  "login": "user",
+  "password": "0002",
+  "token": "to45cfd-dfds43c3244566",
+  "role": "user",
+  "ownCourses": [],
+  "availabelCourses": []
+}]
