@@ -67,3 +67,8 @@ export const updateUserAvailableCoursesAction = async (id: string, item: ObjectI
     return data
 }
 
+
+export const addUserAction = async (item: typeof userSchema) => {
+    const data = await usersDb.create(item)
+    return data
+}

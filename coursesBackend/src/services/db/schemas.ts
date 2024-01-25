@@ -12,8 +12,8 @@ export const difficultySchema = new mongoose.Schema({
 })
 
 export const userSchema = new mongoose.Schema({
-    login: String,
-    password: String,
+    login: {type:String, required:true},
+    password: {type:String, required:true},
     role: String,
     rating: [Number],
     ownCourses: [ObjectId],

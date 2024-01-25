@@ -43,4 +43,9 @@ describe('user test', () => {
         const res = await requestWithSupertest.patch(`/api/users/${testId}/available-courses`).send({courseId: '65a6884c14393c319e7526b7'}).set('Content-Type', 'application/json').set('Accept', 'application/json');
         expect(res.statusCode).toBe(200);
     })
+
+    test('register user works', async () => {
+        const res = await requestWithSupertest.post("/api/users/register").send({login:Math.random(), password:'test2', confirmpassword:'test2'}).set('Content-Type', 'application/json').set('Accept', 'application/json')
+        expect(res.statusCode).toBe(200);
+    })
 })
