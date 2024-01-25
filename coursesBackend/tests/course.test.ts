@@ -1,42 +1,63 @@
 
+import mongoose from 'mongoose';
+import request from 'supertest';
+import { dbUrl } from '../src/constants/constants';
+import app from '../src/app'
+import 'dotenv'
+
+const requestWithSupertest = request(app);
+
 describe('course test', () => {
 
-    test('course exists', async () => {
-        // import api course from bd
-        // expect(course).toBe(true)
+    let testId = ''
+
+    /* Connecting to the database before each test. */
+    beforeEach(async () => {
+        await mongoose.connect(dbUrl);
+    });
+
+    /* Closing database connection after each test. */
+    afterEach(async () => {
+        await mongoose.connection.close();
+    });
+
+    test('get courses list works', async () => {
+
+        const res = await requestWithSupertest.get("/api/courses");
+        expect(res.statusCode).toBe(200);
+        expect(res.body.length).toBeGreaterThan(0);
     })
 
-    test('course fields', async () => {
-        // import api course from bd
-        // for every required fields
-        // expect(field).toBe(true)
+    test('add course works', async () => {
+        const res = await requestWithSupertest.post("/api/courses").send({form:{title:'test'}, userId:'65a683fb14393c319e7526b2'}).set('Content-Type', 'application/json').set('Accept', 'application/json')
+        expect(res.statusCode).toBe(200);
+        expect(res.body.data.title).toBe('test')
+        testId = res.body.data._id
     })
 
-    test('course fields types', async () => {
-        // import api course from bd
-        // for every fields check type
-        // expect(typeof field === 'some type').toBe(true)
+    test('get course works', async () => {
+        const res = await requestWithSupertest.get(`/api/courses/${testId}`);
+        expect(res.statusCode).toBe(200);
+        expect(res.body._id).toBe(testId);
     })
 
-    test('course create', async () => {
-        //api create course
-        //expect(newCourse).toBe(true)
+    test('patch course works', async () => {
+        const res = await requestWithSupertest.patch(`/api/courses/${testId}`).send({title: 'test2'}).set('Content-Type', 'application/json').set('Accept', 'application/json');
+        expect(res.statusCode).toBe(200);
     })
 
-    test('course update', async () => {
-        //api update course
-        //expect(CourseField === 'some').toBe(true)
-        //for example: rating, comment
+    test('patch rating works', async () => {
+        const res = await requestWithSupertest.patch(`/api/courses/${testId}/rating`).send({rating: 5}).set('Content-Type', 'application/json').set('Accept', 'application/json');
+        expect(res.statusCode).toBe(200);
     })
 
-    test('course assessment', async () => {
-        //for example: rating, comment
-        //api update course
-        //expect(CourseField === 'some').toBe(true)
+    test('patch comments works', async () => {
+        const res = await requestWithSupertest.patch(`/api/courses/${testId}/comments`).send({author:'test', date: new Date(), description: 'test' }).set('Content-Type', 'application/json').set('Accept', 'application/json');
+        expect(res.statusCode).toBe(200);
     })
 
-    test('course delete', async () => {
-        //api delete course
-        //expect(Course).toBe(false)
+    test('delete course works', async () => {
+        const res = await requestWithSupertest.delete(`/api/courses/${testId}`);
+        expect(res.statusCode).toBe(200);
     })
 })

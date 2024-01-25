@@ -12,7 +12,7 @@ Best Courses Ever
 
 <!--  -->
 Cтэк:
-NodeJs, Fastify, MongoDB
+NodeJs, ExpressJs, MongoDB
 
 <!--  -->
 Модель данных:
@@ -22,16 +22,14 @@ NodeJs, Fastify, MongoDB
 -description
 -category
 -difficulty
--attached
 -rating
--comments
+-comments (сущность 4.Comments)
 -lessons (сущность 3.Lessons)
 
 2.User(users)
 -id
 -login
 -password
--token(?)
 -role
 -ownCourses (сущность 1.Courses)
 -availableCourses (сущность 1.Courses)
@@ -41,7 +39,6 @@ NodeJs, Fastify, MongoDB
 -title
 -description
 -video
--comments (сущность 4.Comments)
 -attached
 
 4. Comment(Comments)
@@ -64,27 +61,17 @@ NodeJs, Fastify, MongoDB
 Эндпоинты:
 +++Course:
 1. GET courses list
-response: array of course's objects
-Object contains Lessons, Lesson contains Comments
 2. GET course by id
-response: object of course
-Object contains Lessons, Lesson contains Comments
-3. POST course by id
-response: course id
+3. POST course
 4. PATCH course by id
-response: course id
-
-+++Lesson:
-1. POST comment by course id and lesson id
-2. POST rating by course id and lesson
+5. PATCH course rating
+6. PATCH course comments
 
 +++User:
 1. GET users list
-response: array of user's object
 2. GET user by id
-response: object of user
-3. PATCH user by id (+accesses)
-response: user id
+3. PATCH user by id
+4. PATCH user courses by id
 
 +++Login:
 8. GET login
