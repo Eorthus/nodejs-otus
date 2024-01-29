@@ -11,10 +11,15 @@ export const difficultySchema = new mongoose.Schema({
     name: String,
 })
 
+export const rolesSchema = new mongoose.Schema({
+    title: String,
+    name: String,
+})
+
 export const userSchema = new mongoose.Schema({
     login: String,
     password: String,
-    role: String,
+    role: [rolesSchema],
     rating: [Number],
     ownCourses: [ObjectId],
     availableCourses: [ObjectId]
