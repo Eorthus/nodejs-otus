@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Routing</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+    />
+  </head>
+  <body style="height: 100vh; width: 100vw">
+    <style>
+      .leaflet-right {
+        display: none;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .full {
+        height: 100%;
+        width: 100%;
+      }
+      .notification {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        border: 0;
+        padding: 10px;
+        background: white;
+      }
+    </style>
+
+    <div id="notification" class="notification">
+      Please, allow your location
+    </div>
+    <div id="main" class="hidden full">
+      <div id="map" class="full"></div>
+      <button class="button leaflet-bar leaflet-control" id="reset">
+        Reset route
+      </button>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script>
+      const wsConnection = new WebSocket("ws://localhost:8080");
+      const map = L.map("map");
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map);
+
+      //set route func
+      const setRouteHandler = (polyline) => {
+        L.Routing.control({
+          waypoints: polyline,
+        }).addTo(map);
+      };
+
+      //send message func
+      const wsSend = (data) => {
+        if (!wsConnection.readyState) {
+          setTimeout(function () {
+            wsSend(data);
+          }, 100);
+        } else {
+          wsConnection.send(JSON.stringify(data));
+        }
+      };
+
+      //click func
+      const onMapClick = (e) => {
+        wsSend({ point: e.latlng });
+      };
+
+      //ask geo
+      navigator.geolocation.getCurrentPosition(function (position) {
+        //if geo exists show map
+        document.querySelector("#notification").classList.add("hidden");
+        document.querySelector("#main").classList.remove("hidden");
+
+        const rootPoint = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+
+        //set map view and root point
+        map.setView([rootPoint.lat, rootPoint.lng], 13);
+        L.marker([rootPoint.lat, rootPoint.lng]).addTo(map);
+        map.on("click", onMapClick);
+        wsSend({ point: rootPoint });
+
+        wsConnection.onopen = function (message) {
+          //some action
+        };
+
+        wsConnection.onclose = function (event) {
+          if (event.wasClean) {
+            console.log("Соединение закрыто чисто");
+          } else {
+            console.log("Обрыв соединения"); // например, "убит" процесс сервера
+          }
+          console.log("Код: " + event.code + " причина: " + event.reason);
+        };
+
+        wsConnection.onerror = function (error) {
+          alert("Ошибка " + error.message);
+        };
+
+        wsConnection.onmessage = function (message) {
+          const polyline = JSON.parse(message.data);
+          setRouteHandler(polyline);
+        };
+
+        //reset route action
+        const resetButton = document.querySelector("#reset");
+        resetButton.addEventListener("click", () => {
+          wsSend({ clear: "reset" });
+          location.reload();
+        });
+      });
+    </script>
+  </body>
+</html>
