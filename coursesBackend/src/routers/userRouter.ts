@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getUserByIdHandler, getUsersHandler, patchUserHandler, patchUserCourseHandler } from "../controllers/userController";
-import passport from "passport";
+import passport from "../services/auth/passport";
 
 const userRouter = Router()
 

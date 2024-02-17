@@ -1,6 +1,5 @@
 import passport from "passport";
 import { usersDb } from "../db/schemas";
-import bcrypt from "bcrypt";
 import jwt from "passport-jwt";
 
 const JwtStrategy = jwt.Strategy;
@@ -13,28 +12,15 @@ export const opts = {
   audience: "yoursite.net",
 };
 
-passport.use(
+export default passport.use(
     //@ts-ignore
   new JwtStrategy(opts, async function (jwt_payload, done) {
     try {
 
       const user = await usersDb.findOne({ login: jwt_payload.login });
-
       if (user) {
-        // Compare the provided password with the
-        // hashed password in the database
-        const passwordsMatch = await bcrypt.compare(
-          jwt_payload.password,
-          user.password
-        );
-
-        // // If the passwords match, return the user object
-        if (passwordsMatch) {
           return done(null, user);
-        } else {
-          // If the passwords don't match, return an error
-          return done(null, false, { error: "Incorrect password" });
-        }
+
       } else {
         return done(null, false);
         // or you could create a new account
@@ -44,4 +30,6 @@ passport.use(
       // or you could create a new account
     }
   })
-);
+)
+
+// export default passport
