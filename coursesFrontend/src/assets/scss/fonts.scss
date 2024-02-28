@@ -1,0 +1,174 @@
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Bold'), local('Nominee-Bold'), url('@/assets/fonts/Nominee-Bold.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Bold Italic'), local('Nominee-BoldItalic'),
+    url('@/assets/fonts/Nominee-BoldItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Extra Bold'), local('Nominee-ExtraBold'),
+    url('@/assets/fonts/Nominee-ExtraBold.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Extra Light Italic'), local('Nominee-ExtraLightItalic'),
+    url('@/assets/fonts/Nominee-ExtraLightItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-ExtraLightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Hairline'), local('Nominee-Hairline'),
+    url('@/assets/fonts/Nominee-Hairline.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-Hairline.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Extra Bold Italic'), local('Nominee-ExtraBoldItalic'),
+    url('@/assets/fonts/Nominee-ExtraBoldItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-ExtraBoldItalic.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Extra Light'), local('Nominee-ExtraLight'),
+    url('@/assets/fonts/Nominee-ExtraLight.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Hairline Italic'), local('Nominee-HairlineItalic'),
+    url('@/assets/fonts/Nominee-HairlineItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-HairlineItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Heavy'), local('Nominee-Heavy'), url('@/assets/fonts/Nominee-Heavy.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-Heavy.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Light'), local('Nominee-Light'), url('@/assets/fonts/Nominee-Light.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Heavy Italic'), local('Nominee-HeavyItalic'),
+    url('@/assets/fonts/Nominee-HeavyItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-HeavyItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Light Italic'), local('Nominee-LightItalic'),
+    url('@/assets/fonts/Nominee-LightItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Medium Italic'), local('Nominee-MediumItalic'),
+    url('@/assets/fonts/Nominee-MediumItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Thin'), local('Nominee-Thin'), url('@/assets/fonts/Nominee-Thin.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Medium'), local('Nominee-Medium'), url('@/assets/fonts/Nominee-Medium.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Thin Italic'), local('Nominee-ThinItalic'),
+    url('@/assets/fonts/Nominee-ThinItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Ultra Light Italic'), local('Nominee-UltraLightItalic'),
+    url('@/assets/fonts/Nominee-UltraLightItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-UltraLightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Nominee;
+  src: local('Nominee Ultra Light'), local('Nominee-UltraLight'),
+    url('@/assets/fonts/Nominee-UltraLight.woff2') format('woff2'),
+    url('@/assets/fonts/Nominee-UltraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}

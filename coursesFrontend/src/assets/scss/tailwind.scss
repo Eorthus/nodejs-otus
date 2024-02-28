@@ -1,0 +1,54 @@
+/* stylelint-disable scss/at-rule-no-unknown */
+@import 'typography.scss';
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+  .icon-12 {
+    @apply tw-h-3 tw-w-3;
+  }
+
+  .icon-16 {
+    @apply tw-h-4 tw-w-4;
+  }
+
+  .icon-20 {
+    @apply tw-h-5 tw-w-5;
+  }
+
+  .icon-24 {
+    @apply tw-h-6 tw-w-6;
+  }
+
+  .icon-32 {
+    @apply tw-h-8 tw-w-8;
+  }
+
+  .icon-40 {
+    @apply tw-h-10 tw-w-10;
+  }
+
+  .icon-44 {
+    @apply tw-h-12 tw-w-12;
+  }
+
+  .icon-60 {
+    @apply tw-h-15 tw-w-15;
+  }
+
+  .icon-84 {
+    @apply tw-h-21 tw-w-21;
+  }
+
+  .icon-152 {
+    @apply tw-h-38 tw-w-38;
+  }
+
+  .custom-scroll {
+    @apply scroll-padding tw-overflow-hidden hover:tw-overflow-auto;
+  }
+}
