@@ -17,8 +17,7 @@ app.use(cors())
 app.use(express.json())
 app.use(
     "/api-docs",
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerJsdoc(swaggerOptions), { explorer: true })
+    swaggerUi.serveFiles(swaggerOptions), swaggerUi.setup(swaggerOptions)
   )
 app.use(passport.initialize()); 
 app.use('/api', userRouter)
