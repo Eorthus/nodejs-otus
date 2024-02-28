@@ -1,109 +1,5 @@
 [{
   "_id": {
-    "$oid": "65a6884c14393c319e7526b5"
-  },
-  "id": 1,
-  "title": "Photo and video",
-  "description": "You will be able to take amazing photos and videos using your camera and computer.",
-  "category": {
-    "id": 1,
-    "title": "Art",
-    "name": "ART"
-  },
-  "difficulty": {
-    "id": 2,
-    "title": "Middle",
-    "name": "MIDDLE"
-  },
-  "rating": 4.67,
-  "attached": [],
-  "comments": [
-    {
-      "id": 1,
-      "author": "user",
-      "description": "Good one",
-      "date": {
-        "$date": "2024-01-16T14:51:06.000Z"
-      }
-    }
-  ],
-  "lessons": [
-    {
-      "id": 1,
-      "title": "Camera settings",
-      "description": "You will understand the basic camera settings",
-      "video": "https://www.youtube.com/watch?v=2S24-y0Ij3Y",
-      "attached": [],
-      "comments": [
-        {
-          "description": "Good one",
-          "id": 1,
-          "author": "User",
-          "date": {
-            "$date": "2024-01-16T14:51:06.000Z"
-          }
-        },
-        {
-          "author": "author",
-          "date": {
-            "$date": "2024-01-16T14:51:06.000Z"
-          },
-          "description": "I'm an author",
-          "id": 2
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "Programms",
-      "description": "Installing basic editing programs",
-      "video": "",
-      "attached": [],
-      "comments": []
-    },
-    {
-      "id": 3,
-      "title": "Composition",
-      "description": "Learn composition and framing techniques in photography",
-      "video": "",
-      "attached": [],
-      "comments": []
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "65a6884c14393c319e7526b6"
-  },
-  "id": 2,
-  "title": "Base of programming",
-  "description": "You will learn common knowledges of programming and choosing your way in IT",
-  "category": {
-    "id": 2,
-    "title": "Programing",
-    "name": "PROGRAMING"
-  },
-  "difficulty": {
-    "id": 1,
-    "title": "Low",
-    "name": "LOW"
-  },
-  "rating": 3.22,
-  "attached": [],
-  "comments": [],
-  "lessons": [
-    {
-      "id": 1,
-      "title": "Programing languages",
-      "description": "Find out what programming languages ​​exist and for what purposes they are used",
-      "video": "https://www.youtube.com/watch?v=bwmSjveL3Lc",
-      "attached": [],
-      "comments": []
-    }
-  ]
-},
-{
-  "_id": {
     "$oid": "65a6884c14393c319e7526b7"
   },
   "id": 3,
@@ -132,4 +28,673 @@
       "comments": []
     }
   ]
+},
+{
+  "_id": {
+    "$oid": "65af99dea89031c65ad3a76c"
+  },
+  "id": 1,
+  "title": "123",
+  "attached": [],
+  "lessons": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65af99e1a89031c65ad3a76e"
+  },
+  "id": 1,
+  "title": "123",
+  "attached": [],
+  "lessons": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65af9b0adc420d944e5dd6f4"
+  },
+  "id": 2,
+  "title": "yyy",
+  "attached": [
+    "kjkjkj"
+  ],
+  "lessons": [],
+  "__v": 0,
+  "rating": [
+    1,
+    4
+  ]
+},
+{
+  "_id": {
+    "$oid": "65b0cc14eea57c685ff689e5"
+  },
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0cc3017c54c3cb1b65d12"
+  },
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0cc78a4f1bdcee192388d"
+  },
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0cca1a6ae2c2f32132e5c"
+  },
+  "rating": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+  ],
+  "lessons": [],
+  "comments": [
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:31:28.374Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0d8f0d7542e412b812abd"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:32:11.754Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0d91b5c2abcbc7f5f6577"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:33:38.870Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0d972c742395b08b1ea27"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:35:24.252Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0d9dcf11bf62723b3847c"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:35:55.082Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0d9fbf29c8d17bef267a7"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:36:18.827Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0da128dc7f5e02cd5a576"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:38:23.309Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0da8ff9df496d6ceeb78d"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T09:40:04.653Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b0daf4d38ffcaf6bbf37d2"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:18:43.624Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b13863e6f5870498f85c1c"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:18:55.883Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b1386f0ec99cece5e42e36"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:19:19.514Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b1388756ea4982b94bc8ef"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:19:53.868Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b138a9373b674a2df57703"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:20:16.449Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b138c0b5cb70fd1f819724"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:21:36.392Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b13910965c0e8a98064c68"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:25:43.355Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b13a0767e6151aa1c762a7"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:31:41.645Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b13b6d32433979948a114b"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:32:03.028Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b13b83af2bd95389475066"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:32:18.703Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b13b92271f26fd1318e047"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:52:37.868Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b14055ced9e42b7f5fd1c2"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:53:03.804Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b1406fe37f7bb1e9a4ed8a"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:53:40.890Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b140948fff24f4d7606f5c"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:54:20.410Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b140bcbe3ed99990ed2b97"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:55:04.341Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b140e8c3f356a5f88c49bf"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:55:17.392Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b140f589573a8bc737a851"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:55:58.997Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b1411f64ca994467ab62e3"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:56:11.552Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b1412b86ee540c6f55271b"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:56:24.389Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b141389a7fb4d2953e3ed9"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:57:16.574Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b1416c1463afa9855eb4a4"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:58:31.293Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b141b76aca4f6fbb8fd9aa"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:58:42.697Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b141c2b91cb781bab11478"
+      }
+    },
+    {
+      "author": "test",
+      "date": {
+        "$date": "2024-01-24T16:58:46.677Z"
+      },
+      "description": "test",
+      "_id": {
+        "$oid": "65b141c61cea826bba729d8a"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0ce249940cba0d47ee84b"
+  },
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0ceb272ccc09e365376ba"
+  },
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0cedd32844be062b79b01"
+  },
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0cf76a73f7740375fd0d5"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0d7f5c7fba1bcac8c25ad"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0d823a440c1c9318d3ab7"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0d8b1d2506e95b706444c"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0d972c742395b08b1ea2c"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0d9dcf11bf62723b38482"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0d9fbf29c8d17bef267ae"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0da128dc7f5e02cd5a57e"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0da8ff9df496d6ceeb796"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b0daf4d38ffcaf6bbf37dc"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b13863e6f5870498f85c27"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b1386f0ec99cece5e42e42"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b1388756ea4982b94bc8fc"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b138a9373b674a2df57711"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b138c0b5cb70fd1f819733"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b13910965c0e8a98064c78"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b13a0767e6151aa1c762b8"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b13b6d32433979948a115d"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b13b83af2bd95389475079"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b13b92271f26fd1318e05b"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b14055ced9e42b7f5fd1d7"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b1406fe37f7bb1e9a4eda0"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b140948fff24f4d7606f73"
+  },
+  "title": "test",
+  "rating": [],
+  "lessons": [],
+  "comments": [],
+  "__v": 0
 }]

@@ -7,8 +7,138 @@
   "password": "0000",
   "token": "to45cfd-dfdd453244566",
   "role": "admin",
-  "ownCourses": [],
-  "availabelCourses": []
+  "ownCourses": [
+    {
+      "$oid": "65b0d823a440c1c9318d3ab7"
+    },
+    {
+      "$oid": "65b0d84cd2b9a56b705f958e"
+    },
+    {
+      "$oid": "65b0d8b1d2506e95b706444c"
+    },
+    {
+      "$oid": "65b0d8f0d7542e412b812ac0"
+    },
+    {
+      "$oid": "65b0d91b5c2abcbc7f5f657b"
+    },
+    {
+      "$oid": "65b0d972c742395b08b1ea2c"
+    },
+    {
+      "$oid": "65b0d9dcf11bf62723b38482"
+    },
+    {
+      "$oid": "65b0d9fbf29c8d17bef267ae"
+    },
+    {
+      "$oid": "65b0da128dc7f5e02cd5a57e"
+    },
+    {
+      "$oid": "65b0da8ff9df496d6ceeb796"
+    },
+    {
+      "$oid": "65b0daf4d38ffcaf6bbf37dc"
+    },
+    {
+      "$oid": "65b13863e6f5870498f85c27"
+    },
+    {
+      "$oid": "65b1386f0ec99cece5e42e42"
+    },
+    {
+      "$oid": "65b1388756ea4982b94bc8fc"
+    },
+    {
+      "$oid": "65b138a9373b674a2df57711"
+    },
+    {
+      "$oid": "65b138c0b5cb70fd1f819733"
+    },
+    {
+      "$oid": "65b13910965c0e8a98064c78"
+    },
+    {
+      "$oid": "65b13a0767e6151aa1c762b8"
+    },
+    {
+      "$oid": "65b13b6d32433979948a115d"
+    },
+    {
+      "$oid": "65b13b83af2bd95389475079"
+    },
+    {
+      "$oid": "65b13b92271f26fd1318e05b"
+    },
+    {
+      "$oid": "65b14055ced9e42b7f5fd1d7"
+    },
+    {
+      "$oid": "65b1406fe37f7bb1e9a4eda0"
+    },
+    {
+      "$oid": "65b140948fff24f4d7606f73"
+    },
+    {
+      "$oid": "65b140bcbe3ed99990ed2baf"
+    },
+    {
+      "$oid": "65b140e8c3f356a5f88c49a2"
+    },
+    {
+      "$oid": "65b140f589573a8bc737a833"
+    },
+    {
+      "$oid": "65b1411e64ca994467ab62c4"
+    },
+    {
+      "$oid": "65b1412b86ee540c6f5526fb"
+    },
+    {
+      "$oid": "65b141389a7fb4d2953e3eb8"
+    },
+    {
+      "$oid": "65b1416c1463afa9855eb482"
+    },
+    {
+      "$oid": "65b141b76aca4f6fbb8fd9a3"
+    },
+    {
+      "$oid": "65b141c2b91cb781bab11471"
+    },
+    {
+      "$oid": "65b141c61cea826bba729d83"
+    },
+    {
+      "$oid": "65b141d8ff777e00ceaf8b5b"
+    },
+    {
+      "$oid": "65b141ef56c493cc40c0d6d9"
+    },
+    {
+      "$oid": "65b14221903db572e0cda802"
+    },
+    {
+      "$oid": "65b142287d087bf01e4f2a92"
+    },
+    {
+      "$oid": "65b142401e57e9082ddda526"
+    },
+    {
+      "$oid": "65b14259924744855138eec0"
+    },
+    {
+      "$oid": "65b1425f0f1bbfc601e4952a"
+    },
+    {
+      "$oid": "65b1d531689d34cecaa227f1"
+    },
+    {
+      "$oid": "65b1d573a511dc426eaf9947"
+    }
+  ],
+  "availableCourses": []
 },
 {
   "_id": {
@@ -20,7 +150,7 @@
   "token": "to45cfd-dfdsdfm43244566",
   "role": "author",
   "ownCourses": [],
-  "availabelCourses": []
+  "availableCourses": []
 },
 {
   "_id": {
@@ -32,5 +162,5 @@
   "token": "to45cfd-dfds43c3244566",
   "role": "user",
   "ownCourses": [],
-  "availabelCourses": []
+  "availableCourses": []
 }]
