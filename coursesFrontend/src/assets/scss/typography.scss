@@ -1,0 +1,55 @@
+@layer base {
+  html {
+    font-family: Nominee, Arial, serif;
+  }
+}
+
+@layer utilities {
+  .font-h1 {
+    @apply tw-text-h1 tw-font-bold;
+  }
+
+  .font-h2 {
+    @apply tw-text-h2 tw-font-bold;
+  }
+
+  .font-h3 {
+    @apply tw-text-h3 tw-font-bold;
+  }
+
+  .font-h4 {
+    @apply tw-text-h4 tw-font-bold;
+  }
+
+  .font-h5 {
+    @apply tw-text-h5 tw-font-bold;
+  }
+
+  .font-h6 {
+    @apply tw-text-h6 tw-font-bold;
+  }
+
+  .font-normal-14 {
+    @apply tw-text-h6 tw-font-medium;
+  }
+
+  .font-normal-12-medium {
+    @apply tw-text-base tw-font-medium;
+  }
+
+  .font-normal-12-bold {
+    @apply tw-text-base tw-font-bold;
+  }
+
+  .font-small-bold {
+    @apply tw-text-sm tw-font-bold;
+  }
+
+  .font-small-medium {
+    @apply tw-text-sm tw-font-medium;
+  }
+
+  .font-hint {
+    @apply tw-text-xs tw-font-medium tw-text-blue-dark;
+  }
+}
