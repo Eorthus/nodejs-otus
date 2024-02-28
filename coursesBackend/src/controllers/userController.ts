@@ -1,7 +1,5 @@
 import { Request, Response } from "express"
-import bcrypt from 'bcrypt'
 import { getUsersAction, getUserByIdAction, updateUserAction, updateUserAvailableCoursesAction, addUserAction } from "../services/db/actions/userActions"
-import { usersDb } from "../services/db/schemas"
 
 export const getUsersHandler = async (req: Request, res: Response) => {
     try {

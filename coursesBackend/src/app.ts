@@ -21,7 +21,6 @@ app.use(
     swaggerUi.setup(swaggerJsdoc(swaggerOptions), { explorer: true })
   )
 app.use(passport.initialize()); 
-// app.use(passport.session()); 
 app.use('/api', userRouter)
 app.use('/api', courseRouter)
 app.use('/api', authRouter)
