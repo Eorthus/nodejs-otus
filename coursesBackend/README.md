@@ -50,6 +50,16 @@ NodeJs, Fastify, MongoDB
 -date
 -description
 
+5. Categories
+-id
+-title
+-name
+
+6. Difficulties
+-id
+-title
+-name
+
 <!--  -->
 Эндпоинты:
 +++Course:

@@ -1,0 +1,135 @@
+[{
+  "_id": {
+    "$oid": "65a6884c14393c319e7526b5"
+  },
+  "id": 1,
+  "title": "Photo and video",
+  "description": "You will be able to take amazing photos and videos using your camera and computer.",
+  "category": {
+    "id": 1,
+    "title": "Art",
+    "name": "ART"
+  },
+  "difficulty": {
+    "id": 2,
+    "title": "Middle",
+    "name": "MIDDLE"
+  },
+  "rating": 4.67,
+  "attached": [],
+  "comments": [
+    {
+      "id": 1,
+      "author": "user",
+      "description": "Good one",
+      "date": {
+        "$date": "2024-01-16T14:51:06.000Z"
+      }
+    }
+  ],
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Camera settings",
+      "description": "You will understand the basic camera settings",
+      "video": "https://www.youtube.com/watch?v=2S24-y0Ij3Y",
+      "attached": [],
+      "comments": [
+        {
+          "description": "Good one",
+          "id": 1,
+          "author": "User",
+          "date": {
+            "$date": "2024-01-16T14:51:06.000Z"
+          }
+        },
+        {
+          "author": "author",
+          "date": {
+            "$date": "2024-01-16T14:51:06.000Z"
+          },
+          "description": "I'm an author",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Programms",
+      "description": "Installing basic editing programs",
+      "video": "",
+      "attached": [],
+      "comments": []
+    },
+    {
+      "id": 3,
+      "title": "Composition",
+      "description": "Learn composition and framing techniques in photography",
+      "video": "",
+      "attached": [],
+      "comments": []
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65a6884c14393c319e7526b6"
+  },
+  "id": 2,
+  "title": "Base of programming",
+  "description": "You will learn common knowledges of programming and choosing your way in IT",
+  "category": {
+    "id": 2,
+    "title": "Programing",
+    "name": "PROGRAMING"
+  },
+  "difficulty": {
+    "id": 1,
+    "title": "Low",
+    "name": "LOW"
+  },
+  "rating": 3.22,
+  "attached": [],
+  "comments": [],
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Programing languages",
+      "description": "Find out what programming languages ​​exist and for what purposes they are used",
+      "video": "https://www.youtube.com/watch?v=bwmSjveL3Lc",
+      "attached": [],
+      "comments": []
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65a6884c14393c319e7526b7"
+  },
+  "id": 3,
+  "title": "Automechanic",
+  "description": "You will be able to fix your car by yourself.",
+  "category": {
+    "id": 3,
+    "title": "Engineering",
+    "name": "ENGINEERING"
+  },
+  "difficulty": {
+    "id": 3,
+    "title": "High",
+    "name": "HIGH"
+  },
+  "rating": 5,
+  "attached": [],
+  "comments": [],
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Engine",
+      "description": "Car engine basics",
+      "video": "",
+      "attached": [],
+      "comments": []
+    }
+  ]
+}]

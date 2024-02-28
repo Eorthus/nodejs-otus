@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "65a69ce317724fbfcc5066de"
+  },
+  "id": 1,
+  "title": "Art",
+  "name": "ART"
+},
+{
+  "_id": {
+    "$oid": "65a69ce317724fbfcc5066df"
+  },
+  "id": 2,
+  "title": "Programing",
+  "name": "PROGRAMING"
+},
+{
+  "_id": {
+    "$oid": "65a69ce317724fbfcc5066e0"
+  },
+  "id": 3,
+  "title": "Engineering",
+  "name": "ENGINEERING"
+}]
