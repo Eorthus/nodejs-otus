@@ -8,8 +8,6 @@ const ExtractJwt = jwt.ExtractJwt;
 export const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: process.env.JWT_SECRET,
-  issuer: "accounts.examplesoft.com",
-  audience: "yoursite.net",
 };
 
 export default passport.use(
