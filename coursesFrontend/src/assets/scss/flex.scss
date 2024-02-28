@@ -1,0 +1,57 @@
+@layer utilities {
+  .flex {
+    @apply tw-flex;
+  }
+
+  .items-center {
+    @apply tw-flex tw-items-center;
+  }
+
+  .items-start {
+    @apply tw-flex tw-items-start;
+  }
+
+  .items-end {
+    @apply tw-flex tw-items-end;
+  }
+
+  .items-baseline {
+    @apply tw-flex tw-items-baseline;
+  }
+
+  .space-between {
+    @apply tw-flex tw-justify-between;
+  }
+
+  .justify-around {
+    @apply tw-flex tw-justify-around;
+  }
+
+  .justify-center {
+    @apply tw-flex tw-justify-center;
+  }
+
+  .justify-start {
+    @apply tw-flex tw-justify-start;
+  }
+
+  .justify-end {
+    @apply tw-flex tw-justify-end;
+  }
+
+  .flex-col {
+    @apply tw-flex tw-flex-col;
+  }
+
+  .flex-wrap {
+    @apply tw-flex tw-flex-wrap;
+  }
+
+  .flex-nowrap {
+    @apply tw-flex tw-flex-nowrap;
+  }
+
+  .flex-row {
+    @apply tw-flex tw-flex-row;
+  }
+}
