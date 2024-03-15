@@ -1,11 +1,13 @@
 import { Request, Response } from "express"
-import { getUsersAction, getUserByIdAction, updateUserAction,updateUserAvailableCoursesAction } from "../services/db/actions/userActions"
+import bcrypt from 'bcrypt'
+import { getUsersAction, getUserByIdAction, updateUserAction, updateUserAvailableCoursesAction, addUserAction } from "../services/db/actions/userActions"
+import { usersDb } from "../services/db/schemas"
 
 export const getUsersHandler = async (req: Request, res: Response) => {
     try {
         const items = await getUsersAction()
 
-        if (!items){
+        if (!items) {
             return res.status(404)
         }
 
@@ -17,14 +19,14 @@ export const getUsersHandler = async (req: Request, res: Response) => {
 
 export const getUserByIdHandler = async (req: Request, res: Response) => {
     try {
-        const {id} = req.params
-        if (!id){
-            return res.status(400).json({message: 'invalid id'})
+        const { id } = req.params
+        if (!id) {
+            return res.status(400).json({ message: 'invalid id' })
         }
 
         const user = await getUserByIdAction(id)
 
-        if (!user){
+        if (!user) {
             return res.status(404)
         }
 
@@ -36,14 +38,14 @@ export const getUserByIdHandler = async (req: Request, res: Response) => {
 
 export const patchUserHandler = async (req: Request, res: Response) => {
     try {
-        const {id} = req.params
-        if (!id){
-            return res.status(400).json({message: 'invalid id'})
+        const { id } = req.params
+        if (!id) {
+            return res.status(400).json({ message: 'invalid id' })
         }
 
         const item = await updateUserAction(id, req.body)
 
-        if (!item){
+        if (!item) {
             return res.status(404)
         }
 

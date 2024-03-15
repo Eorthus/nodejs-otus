@@ -17,9 +17,10 @@ export const rolesSchema = new mongoose.Schema({
 })
 
 export const userSchema = new mongoose.Schema({
-    login: String,
-    password: String,
-    role: [rolesSchema],
+    login: {type:String, required:true},
+    password: {type:String, required:true},
+    refreshToken: String,
+    role: String,
     rating: [Number],
     ownCourses: [ObjectId],
     availableCourses: [ObjectId]
