@@ -1,7 +1,6 @@
 import dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
-import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 import passport from './services/auth/passport'
 import userRouter from './routers/userRouter'
