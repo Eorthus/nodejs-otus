@@ -5,7 +5,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # копируем основные файлы приложения в рабочую директорию
-COPY pnpm-lock.yaml package.json ./
+COPY package*.json ./
 
 # Install app dependencies using PNPM
 RUN npm install -g pnpm 
