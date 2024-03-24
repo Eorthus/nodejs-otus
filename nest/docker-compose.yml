@@ -4,6 +4,7 @@ services:
   postgres:
     image: postgres:13
     container_name: postgres_db
+    network_mode: host
     ports:
       - '5432:5432'
     environment:
@@ -18,6 +19,7 @@ services:
       - postgres
     build: .
     restart: unless-stopped
+    network_mode: host
     ports:
       - '8080:8080'
     stdin_open: true
