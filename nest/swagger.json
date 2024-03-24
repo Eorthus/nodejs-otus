@@ -1,0 +1,564 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "REST API for Swagger Documentation",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    }
+  ],
+  "paths": {
+    "/courses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get list of courses",
+        "description": "Get list of courses",
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/getCourseSchema"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Add course",
+        "description": "Post course",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postCourseSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postCourseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/courses/:id": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get course by id",
+        "description": "Get course by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCourseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Edit course by id",
+        "description": "Edit course by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postCourseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Delete course by id",
+        "description": "Delete course by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCourseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/courses/:id/rating": {
+      "patch": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Set course rating",
+        "description": "Set course rating",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCourseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/courses/:id/comments": {
+      "patch": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Set comment to course",
+        "description": "Set comment to course",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCourseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get list of users",
+        "description": "Get list of users",
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/getUsersSchema"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users/:id": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user by id",
+        "description": "Get user by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getUsersSchema"
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Edit user by id",
+        "description": "Edit user by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getUsersSchema"
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "/users/:id/available-courses": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Edit user's available courses",
+        "description": "Edit user's available courses",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of item",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getUsersSchema"
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "getCourseSchema": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Automechanic"
+          },
+          "description": {
+            "type": "string",
+            "example": "You will be able to fix your car by yourself."
+          },
+          "rating": {
+            "type": "array",
+            "example": [
+              2,
+              5
+            ]
+          },
+          "category": {
+            "type": "object",
+            "example": {
+              "id": 3,
+              "title": "Engineering",
+              "name": "ENGINEERING"
+            }
+          },
+          "difficulty": {
+            "type": "object",
+            "example": {
+              "id": 3,
+              "title": "High",
+              "name": "HIGH"
+            }
+          },
+          "lessons": {
+            "type": "array",
+            "example": [
+              {
+                "title": "Engine",
+                "description": "How does it work",
+                "video": "https://www.youtube.com/watch?v=Bru4DtUe_CE",
+                "attached": []
+              }
+            ]
+          },
+          "comments": {
+            "type": "array",
+            "example": [
+              {
+                "author": "Ivanov I.I.",
+                "date": "Sun Jan 28 2024 20:29:21 GMT+0400",
+                "description": "Cool"
+              }
+            ]
+          }
+        },
+        "ExampleSchemaHeader": {
+          "required": [
+            "text"
+          ],
+          "properties": {
+            "text": {
+              "type": "string",
+              "example": "This is some example string!"
+            }
+          }
+        }
+      },
+      "postCourseSchema": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Automechanic"
+          },
+          "description": {
+            "type": "string",
+            "example": "You will be able to fix your car by yourself."
+          },
+          "category": {
+            "type": "object",
+            "example": {
+              "id": 3,
+              "title": "Engineering",
+              "name": "ENGINEERING"
+            }
+          },
+          "difficulty": {
+            "type": "object",
+            "example": {
+              "id": 3,
+              "title": "High",
+              "name": "HIGH"
+            }
+          },
+          "lessons": {
+            "type": "array",
+            "example": [
+              {
+                "title": "Engine",
+                "description": "How does it work",
+                "video": "https://www.youtube.com/watch?v=Bru4DtUe_CE",
+                "attached": []
+              }
+            ]
+          }
+        },
+        "ExampleSchemaHeader": {
+          "required": [
+            "text"
+          ],
+          "properties": {
+            "text": {
+              "type": "string",
+              "example": "This is some example string!"
+            }
+          }
+        }
+      },
+      "getUsersSchema": {
+        "properties": {
+          "login": {
+            "type": "string",
+            "example": "Admin"
+          },
+          "password": {
+            "type": "string",
+            "example": "$2b$15$qKfx4yzI7MM4xVcU2DizIOLq0ajRuXfytEgTBcoh5rVza.Z.dlk7e"
+          },
+          "role": {
+            "type": "object",
+            "example": {
+              "title": "Admin",
+              "name": "ADMIN"
+            }
+          },
+          "rating": {
+            "type": "array",
+            "example": [
+              3,
+              5
+            ]
+          },
+          "ownCourses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/getCourseSchema"
+            }
+          },
+          "availableCourses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/getCourseSchema"
+            }
+          }
+        },
+        "ExampleSchemaHeader": {
+          "required": [
+            "text"
+          ],
+          "properties": {
+            "text": {
+              "type": "string",
+              "example": "This is some example string!"
+            }
+          }
+        }
+      }
+    }
+  }
+}
