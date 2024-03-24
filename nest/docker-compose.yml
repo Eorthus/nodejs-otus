@@ -4,6 +4,7 @@ services:
   mongodb:
     image: mongo
     restart: unless-stopped
+    network_mode: host
     ports:
       - '27017:27017'
     volumes:
@@ -14,6 +15,7 @@ services:
       - mongodb
     build: .
     restart: unless-stopped
+    network_mode: host
     ports:
       - '8080:8080'
     stdin_open: true
