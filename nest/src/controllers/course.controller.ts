@@ -11,10 +11,11 @@ import {
   HttpStatus,
   UseGuards,
 } from '@nestjs/common';
-import { CourseType } from '../schemas/course.schema';
-import { UserType } from '../schemas/user.schema';
+import { Courses } from '../entities/course.entity';
 import { CourseService } from '../services/course.service';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Users } from '../entities/user.entity';
+import { Comment } from '../entities/other.entity';
 
 const invalidIdErrorHandler = () => {
   throw new HttpException(
@@ -31,10 +32,11 @@ export class CourseController {
   constructor(private courseService: CourseService) {}
 
   @Get()
-  async findAll(): Promise<CourseType[]> {
+  async findAll(): Promise<Courses[]> {
     const items = await this.courseService.findAll();
 
     if (!items) {
+      //TODO res []
       throw new HttpException(
         {
           status: HttpStatus.BAD_REQUEST,
@@ -47,7 +49,7 @@ export class CourseController {
     return items;
   }
   @Get(':id')
-  async findOne(@Param('id', ParseIntPipe) id: string): Promise<CourseType> {
+  async findOne(@Param('id', ParseIntPipe) id: string): Promise<Courses> {
     if (!id) {
       invalidIdErrorHandler();
     }
@@ -69,7 +71,9 @@ export class CourseController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async addOne(@Body() body: CourseType & UserType['id']): Promise<CourseType> {
+  async addOne(
+    @Body() body: { form: Courses; userId: Users['id'] },
+  ): Promise<Courses> {
     const data = await this.courseService.createOne(body.form, body.userId);
 
     return data;
@@ -77,7 +81,7 @@ export class CourseController {
 
   @UseGuards(JwtAuthGuard)
   @Delete()
-  async deleteOne(@Param('id', ParseIntPipe) id: string): Promise<CourseType> {
+  async deleteOne(@Param('id', ParseIntPipe) id: string): Promise<Courses> {
     if (!id) {
       invalidIdErrorHandler();
     }
@@ -101,8 +105,8 @@ export class CourseController {
   @Patch(':id')
   async patchOne(
     @Param('id', ParseIntPipe) id: string,
-    @Body() body: CourseType,
-  ): Promise<CourseType> {
+    @Body() body: Courses,
+  ): Promise<Courses> {
     if (!id) {
       invalidIdErrorHandler();
     }
@@ -123,12 +127,13 @@ export class CourseController {
 
   @Patch(':id/rating')
   async patchOneRating(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: string,
     @Body() body: { rating: number },
-  ): Promise<CourseType> {
+  ): Promise<Courses> {
     if (!id) {
       invalidIdErrorHandler();
     }
+
     const item = await this.courseService.updateRatingOne(id, body.rating);
 
     if (!item) {
@@ -145,9 +150,9 @@ export class CourseController {
 
   @Patch(':id/comment')
   async patchOneComment(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() body: CourseType,
-  ): Promise<CourseType> {
+    @Param('id', ParseIntPipe) id: string,
+    @Body() body: Comment,
+  ): Promise<Courses> {
     if (!id) {
       invalidIdErrorHandler();
     }

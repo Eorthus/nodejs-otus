@@ -10,12 +10,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { CourseType } from '../schemas/course.schema';
-import { UserType } from '../schemas/user.schema';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { UserService } from '../services/user.service';
-import { HasRoles, Role } from 'src/auth/roles.decorator';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { HasRoles, Role } from '../auth/roles.decorator';
+import { RolesGuard } from '../auth/roles.guard';
+import { Users } from '../entities/user.entity';
+import { Courses } from '../entities/course.entity';
 
 const invalidIdErrorHandler = () => {
   throw new HttpException(
@@ -34,7 +34,7 @@ export class UserController {
   @HasRoles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
-  async findAll(): Promise<UserType[]> {
+  async findAll(): Promise<Users[]> {
     const items = await this.userService.findAll();
 
     if (!items) {
@@ -53,7 +53,7 @@ export class UserController {
   @HasRoles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
-  async findOne(@Param('id', ParseIntPipe) id: string): Promise<UserType> {
+  async findOne(@Param('id', ParseIntPipe) id: string): Promise<Users> {
     if (!id) {
       invalidIdErrorHandler();
     }
@@ -78,8 +78,8 @@ export class UserController {
   @Patch(':id')
   async patchOne(
     @Param('id', ParseIntPipe) id: string,
-    @Body() body: UserType,
-  ): Promise<UserType> {
+    @Body() body: Users,
+  ): Promise<Users> {
     if (!id) {
       invalidIdErrorHandler();
     }
@@ -103,8 +103,8 @@ export class UserController {
   @Patch(':id/available')
   async patchOneAvailableCourses(
     @Param('id', ParseIntPipe) id: string,
-    @Body() body: { id: CourseType['id'] },
-  ): Promise<UserType> {
+    @Body() body: { id: Courses['id'] },
+  ): Promise<Users> {
     if (!id) {
       invalidIdErrorHandler();
     }

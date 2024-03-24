@@ -1,94 +1,93 @@
-import { Model, ObjectId } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Users, UserType } from '../schemas/user.schema';
+import { Users } from '../entities/user.entity';
+import { Courses } from '../entities/course.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(Users.name) private userModel: Model<Users>) {}
+  constructor(
+    @InjectRepository(Users)
+    private readonly usersRepository: Repository<Users>,
+  ) {}
 
-  async findAll(): Promise<UserType[]> {
-    const data = await this.userModel.find();
-
-    return JSON.parse(JSON.stringify(data));
-  }
-
-  async createOne(item: UserType): Promise<UserType> {
-    const newItem = new this.userModel(item);
-
-    const data = await newItem.save();
+  async findAll(): Promise<Users[]> {
+    const data = await this.usersRepository.find();
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async findOneById(id: UserType['id']): Promise<UserType> {
-    const data = await this.userModel.findById(id);
+  async createOne(item: Users): Promise<Users> {
+    const newItem = this.usersRepository.create(item);
+
+    const data = await this.usersRepository.save(newItem);
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async findOne(login: UserType['login']): Promise<UserType> {
-    const data = await this.userModel.findOne({ login });
-
-    return JSON.parse(JSON.stringify(data));
-  }
-
-  async deleteOne(id: UserType['id']): Promise<UserType> {
-    const data = await this.userModel.findByIdAndDelete(id);
-
-    return JSON.parse(JSON.stringify(data));
-  }
-
-  async updateOne(id: UserType['id'], item: UserType): Promise<UserType> {
-    const data = await this.userModel.findByIdAndUpdate(id, item, {
-      new: true,
+  async findOneById(id: Users['id']): Promise<Users> {
+    const data = await this.usersRepository.findOneBy({
+      id,
     });
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async updateOwnCoursesOne(
-    id: UserType['id'],
-    item: ObjectId,
-  ): Promise<UserType> {
-    const user = await this.userModel.findById(id);
+  async findOne(login: Users['login']): Promise<Users> {
+    const data = await this.usersRepository.findOneBy({
+      login,
+    });
 
-    if (user?.ownCourses?.indexOf(item) !== -1) {
-      const data = await this.userModel.findByIdAndUpdate(
-        id,
-        { $pull: { ownCourses: item } },
-        { new: true },
-      );
-      return JSON.parse(JSON.stringify(data));
-    }
-    const data = await this.userModel.findByIdAndUpdate(
+    return JSON.parse(JSON.stringify(data));
+  }
+
+  async deleteOne(id: Users['id']): Promise<Users> {
+    const data = await this.usersRepository.delete({ id });
+
+    return JSON.parse(JSON.stringify(data));
+  }
+
+  async updateOne(id: Users['id'], item: Users): Promise<Users> {
+    const data = await this.usersRepository.update(id, item);
+
+    return JSON.parse(JSON.stringify(data));
+  }
+
+  async updateOwnCoursesOne(
+    id: Users['id'],
+    item: Courses['id'],
+  ): Promise<Users> {
+    const foundedItem = await this.usersRepository.findOneBy({
       id,
-      { $push: { ownCourses: item } },
-      { new: true },
-    );
+    });
+
+    if (foundedItem?.ownCourses?.indexOf(item) !== -1) {
+      return;
+    }
+
+    foundedItem.ownCourses.push(item);
+
+    const data = await this.usersRepository.update(id, foundedItem);
+
     return JSON.parse(JSON.stringify(data));
   }
 
   async updateAvailableCoursesOne(
-    id: UserType['id'],
-    item: ObjectId,
-  ): Promise<UserType> {
-    const user = await this.userModel.findById(id);
+    id: Users['id'],
+    item: Courses['id'],
+  ): Promise<Users> {
+    const foundedItem = await this.usersRepository.findOneBy({
+      id,
+    });
 
-    if (user?.availableCourses?.indexOf(item) !== -1) {
-      const data = await this.userModel.findByIdAndUpdate(
-        id,
-        { $pull: { availableCourses: item } },
-        { new: true },
-      );
-      return JSON.parse(JSON.stringify(data));
+    if (foundedItem?.availableCourses?.indexOf(item) !== -1) {
+      return;
     }
 
-    const data = await this.userModel.findByIdAndUpdate(
-      id,
-      { $push: { availableCourses: item } },
-      { new: true },
-    );
+    foundedItem.availableCourses.push(item);
+
+    const data = await this.usersRepository.update(id, foundedItem);
+
     return JSON.parse(JSON.stringify(data));
   }
 }

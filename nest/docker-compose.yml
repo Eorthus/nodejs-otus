@@ -1,17 +1,21 @@
 version: '3.8'
 
 services:
-  mongodb:
-    image: mongo
-    restart: unless-stopped
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
     ports:
-      - '27017:27017'
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: courses
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 0000
     volumes:
-      - /data/db
+      - postgres_data:/var/lib/postgresql/data
       
   app:
     depends_on:
-      - mongodb
+      - postgres
     build: .
     restart: unless-stopped
     ports:
@@ -20,4 +24,4 @@ services:
     tty: true
 
 volumes:
-  db:
+  postgres_data:

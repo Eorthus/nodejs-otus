@@ -1,20 +1,21 @@
-import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Courses, CourseType } from '../schemas/course.schema';
-import { UserType } from 'src/schemas/user.schema';
+import { Courses } from '../entities/course.entity';
+import { Comment } from 'src/entities/other.entity';
 import { UserService } from './user.service';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Users } from '../entities/user.entity';
 
 @Injectable()
 export class CourseService {
   constructor(
-    @InjectModel(Courses.name) private courseModel: Model<Courses>,
+    @InjectRepository(Courses)
+    private readonly coursesRepository: Repository<Courses>,
     private userService: UserService,
   ) {}
 
-  async findAll(): Promise<CourseType[]> {
-    const data = await this.courseModel.find();
-
+  async findAll(): Promise<Courses[]> {
+    const data = await this.coursesRepository.find();
     const items = JSON.parse(JSON.stringify(data));
 
     //todo change type logic
@@ -33,24 +34,23 @@ export class CourseService {
     return items;
   }
 
-  async createOne(
-    item: CourseType,
-    userId: UserType['id'],
-  ): Promise<CourseType> {
-    const newItem = new this.courseModel(item);
+  async createOne(item: Courses, userId: Users['id']): Promise<Courses> {
+    const newItem = this.coursesRepository.create(item);
 
-    const res = await newItem.save();
+    const res = await this.coursesRepository.save(newItem);
 
-    //@ts-expect-error type
-    const user = await this.userService.updateOwnCoursesOne(userId, res._id);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const user = await this.userService.updateOwnCoursesOne(userId, res.id);
 
     const data = JSON.parse(JSON.stringify(res));
     //@ts-expect-error type
     return { data, user };
   }
 
-  async findOne(id: CourseType['id']): Promise<CourseType> {
-    const data = await this.courseModel.findById(id);
+  async findOne(id: Courses['id']): Promise<Courses> {
+    const data = await this.coursesRepository.findOneBy({
+      id,
+    });
 
     const item = JSON.parse(JSON.stringify(data));
 
@@ -65,42 +65,42 @@ export class CourseService {
     return item;
   }
 
-  async deleteOne(id: CourseType['id']): Promise<CourseType> {
-    const data = await this.courseModel.findByIdAndDelete(id);
+  async deleteOne(id: Courses['id']): Promise<Courses> {
+    const data = await this.coursesRepository.delete({ id });
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async updateOne(id: CourseType['id'], item: CourseType): Promise<CourseType> {
-    const data = await this.courseModel.findByIdAndUpdate(id, item, {
-      new: true,
+  async updateOne(id: Courses['id'], item: Courses): Promise<Courses> {
+    const data = await this.coursesRepository.update(id, item);
+
+    return JSON.parse(JSON.stringify(data));
+  }
+
+  async updateRatingOne(id: Courses['id'], item: number): Promise<Courses> {
+    const foundedItem = await this.coursesRepository.findOneBy({
+      id,
     });
 
-    return JSON.parse(JSON.stringify(data));
-  }
+    foundedItem.rating.push(item);
 
-  async updateRatingOne(
-    id: CourseType['id'],
-    item: number,
-  ): Promise<CourseType> {
-    const data = await this.courseModel.findByIdAndUpdate(
-      id,
-      { $push: { rating: item } },
-      { new: true },
-    );
+    const data = await this.coursesRepository.update(id, foundedItem);
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async updateCommentOne(
-    id: CourseType['id'],
-    item: CourseType,
-  ): Promise<CourseType> {
-    const data = await this.courseModel.findByIdAndUpdate(
+  async updateCommentOne(id: Courses['id'], item: Comment): Promise<Courses> {
+    const foundedItem = await this.coursesRepository.findOneBy({
       id,
-      { $push: { comments: item } },
-      { new: true },
-    );
+    });
+
+    if (!foundedItem.comments?.length) {
+      foundedItem.comments = [];
+    }
+
+    foundedItem.comments.push(item);
+
+    const data = await this.coursesRepository.save(foundedItem);
 
     return JSON.parse(JSON.stringify(data));
   }

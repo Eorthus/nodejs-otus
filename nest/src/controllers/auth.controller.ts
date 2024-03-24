@@ -5,12 +5,12 @@ import {
   HttpStatus,
   Body,
 } from '@nestjs/common';
-import { UserType } from '../schemas/user.schema';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { Users } from '../entities/user.entity';
 
 @Controller('api/auth')
 export class AuthController {
@@ -22,7 +22,7 @@ export class AuthController {
   @Post('register')
   async register(
     @Body() body: { login: string; password: string },
-  ): Promise<UserType[]> {
+  ): Promise<Users[]> {
     const { login, password } = body;
     if (!login && !password) {
       throw new HttpException(
@@ -96,7 +96,7 @@ export class AuthController {
   }
 
   @Post('logout')
-  async logout(@Body() body: { refreshToken: string }): Promise<UserType[]> {
+  async logout(@Body() body: { refreshToken: string }): Promise<Users> {
     const { refreshToken } = body;
     const user = await this.userService.findOne(refreshToken);
     if (!user) {

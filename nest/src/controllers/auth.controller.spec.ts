@@ -1,18 +1,29 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from '../services/auth.service';
-import { dbUrl, jwt_secret } from '../constants/constants';
-import { MongooseModule } from '@nestjs/mongoose';
-import { UserSchema, Users } from '../schemas/user.schema';
+import { jwt_secret } from '../constants/constants';
+import { Users } from '../entities/user.entity';
 import { AuthController } from './auth.controller';
 import { UserController } from './user.controller';
 import { UserModule } from '../modules/user.module';
-import { JwtModule} from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from '../auth/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 const testLogin = String(Math.random());
 const testPass = 'test2';
 export let userId = '';
+
+export const dbTestModule = TypeOrmModule.forRoot({
+  type: 'postgres',
+  host: '127.0.0.1',
+  port: 5432,
+  username: 'postgres',
+  password: '0000',
+  database: 'courses',
+  entities: [__dirname + '/../**/*.entity.ts'],
+  synchronize: true,
+});
 
 describe('AuthController', () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,13 +35,8 @@ describe('AuthController', () => {
       imports: [
         UserModule,
         PassportModule,
-        MongooseModule.forRoot(dbUrl),
-        MongooseModule.forFeature([
-          {
-            name: Users.name,
-            schema: UserSchema,
-          },
-        ]),
+        dbTestModule,
+        TypeOrmModule.forFeature([Users]),
         JwtModule.register({
           secret: jwt_secret,
           signOptions: { expiresIn: '60s' },
@@ -53,7 +59,7 @@ describe('AuthController', () => {
       expect(res).toBeTruthy();
 
       //@ts-expect-error type
-      userId = res._id;
+      userId = res.id;
     });
 
     it('login', async () => {

@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
 import { UserService } from '../services/user.service';
-import { dbUrl } from '../constants/constants';
-import { MongooseModule } from '@nestjs/mongoose';
-import { UserSchema, Users } from '../schemas/user.schema';
+import { Users } from '../entities/user.entity';
 import { userId } from './auth.controller.spec';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { dbTestModule } from './auth.controller.spec';
 
 describe('UserController', () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -12,15 +12,7 @@ describe('UserController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [
-        MongooseModule.forRoot(dbUrl),
-        MongooseModule.forFeature([
-          {
-            name: Users.name,
-            schema: UserSchema,
-          },
-        ]),
-      ],
+      imports: [dbTestModule, TypeOrmModule.forFeature([Users])],
       controllers: [UserController],
       providers: [UserService],
     }).compile();
@@ -28,7 +20,7 @@ describe('UserController', () => {
     userController = app.get<UserController>(UserController);
   });
 
-  describe('course', () => {
+  describe('users', () => {
     it('findAll', async () => {
       const res = await userController.findAll();
       expect(Array.isArray(res)).toBeTruthy();

@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CourseController } from '../controllers/course.controller';
 import { CourseService } from '../services/course.service';
-import { dbUrl } from '../constants/constants';
-import { MongooseModule } from '@nestjs/mongoose';
-import { CoursesSchema, Courses } from '../schemas/course.schema';
 import { UserModule } from '../modules/user.module';
 import { userId } from './auth.controller.spec';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Courses } from '../entities/course.entity';
+import { dbTestModule } from './auth.controller.spec';
 
 describe('AppController', () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -15,16 +15,7 @@ describe('AppController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [
-        UserModule,
-        MongooseModule.forRoot(dbUrl),
-        MongooseModule.forFeature([
-          {
-            name: Courses.name,
-            schema: CoursesSchema,
-          },
-        ]),
-      ],
+      imports: [UserModule, dbTestModule, TypeOrmModule.forFeature([Courses])],
       controllers: [CourseController],
       providers: [CourseService],
     }).compile();
@@ -33,21 +24,21 @@ describe('AppController', () => {
   });
 
   describe('course', () => {
+    it('createOne', async () => {
+      const res = await courseController.addOne({
+        // @ts-expect-error type
+        form: { title: 'test', description: 'test' },
+        userId,
+      });
+      expect(res).toBeTruthy();
+
+      //@ts-expect-error type
+      testId = res?.data?.id;
+    });
+
     it('findAll', async () => {
       const res = await courseController.findAll();
       expect(Array.isArray(res)).toBeTruthy();
-    });
-
-    it('createOne', async () => {
-      const res = await courseController.addOne({
-        form: { title: 'test' },
-        userId,
-      });
-
-      expect(res).toBeTruthy();
-
-      // @ts-expect-error type
-      testId = res?.data._id;
     });
 
     it('findOne', async () => {
@@ -62,7 +53,6 @@ describe('AppController', () => {
     });
 
     it('updateRatingOne', async () => {
-      // @ts-expect-error type
       const res = await courseController.patchOneRating(testId, { rating: 5 });
       expect(res).toBeTruthy();
     });
