@@ -1,35 +1,37 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CourseController } from '../controllers/course.controller';
 import { CourseService } from '../services/course.service';
 import { UserModule } from '../modules/user.module';
-import { userId } from './auth.controller.spec';
+import { userId } from './auth.resolver.spec';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Courses } from '../entities/course.entity';
-import { dbTestModule } from './auth.controller.spec';
+import { CoursesEntity } from '../entities/course.entity';
+import { dbTestModule } from './auth.resolver.spec';
+import { CoursesResolver } from './course.resolver';
 
 describe('AppController', () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let courseController: CourseController;
+  let courseResolver: CoursesResolver;
 
   let testId = '';
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [UserModule, dbTestModule, TypeOrmModule.forFeature([Courses])],
-      controllers: [CourseController],
-      providers: [CourseService],
+      imports: [
+        UserModule,
+        dbTestModule,
+        TypeOrmModule.forFeature([CoursesEntity]),
+      ],
+      providers: [CourseService, CoursesResolver],
     }).compile();
 
-    courseController = app.get<CourseController>(CourseController);
+    courseResolver = app.get<CoursesResolver>(CoursesResolver);
   });
 
   describe('course', () => {
     it('createOne', async () => {
-      const res = await courseController.addOne({
-        // @ts-expect-error type
-        form: { title: 'test', description: 'test' },
+      const res = await courseResolver.addCourse(
+        { title: 'test', description: 'test' },
         userId,
-      });
+      );
       expect(res).toBeTruthy();
 
       //@ts-expect-error type
@@ -37,29 +39,31 @@ describe('AppController', () => {
     });
 
     it('findAll', async () => {
-      const res = await courseController.findAll();
+      const res = await courseResolver.courses();
       expect(Array.isArray(res)).toBeTruthy();
     });
 
     it('findOne', async () => {
-      const res = await courseController.findOne(testId);
+      const res = await courseResolver.course(testId);
       expect(res).toBeTruthy();
     });
 
     it('updateOne', async () => {
-      // @ts-expect-error type
-      const res = await courseController.patchOne(testId, { title: 'test2' });
+      const res = await courseResolver.updateCourse(testId, {
+        title: 'test2',
+      });
       expect(res).toBeTruthy();
     });
 
     it('updateRatingOne', async () => {
-      const res = await courseController.patchOneRating(testId, { rating: 5 });
+      const res = await courseResolver.updateRatingCourse(testId, {
+        rating: 5,
+      });
       expect(res).toBeTruthy();
     });
 
     it('updateCommentsOne', async () => {
-      // @ts-expect-error type
-      const res = await courseController.patchOneComment(testId, {
+      const res = await courseResolver.updateCommentCourse(testId, {
         author: 'test',
         date: new Date(),
         description: 'test',
@@ -68,7 +72,7 @@ describe('AppController', () => {
     });
 
     it('delete', async () => {
-      const res = await courseController.deleteOne(testId);
+      const res = await courseResolver.removeCourse(testId);
       expect(res).toBeTruthy();
     });
   });

@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from '../services/auth.service';
 import { jwt_secret } from '../constants/constants';
-import { Users } from '../entities/user.entity';
-import { AuthController } from './auth.controller';
-import { UserController } from './user.controller';
+import { UsersEntity } from '../entities/user.entity';
 import { UserModule } from '../modules/user.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from '../auth/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersResolver } from './user.resolver';
+import { AuthResolver } from './auth.resolver';
 
 const testLogin = String(Math.random());
 const testPass = 'test2';
@@ -25,10 +25,10 @@ export const dbTestModule = TypeOrmModule.forRoot({
   synchronize: true,
 });
 
-describe('AuthController', () => {
+describe('AuthResolver', () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let userController: UserController;
-  let authController: AuthController;
+  let usersResolver: UsersResolver;
+  let authResolver: AuthResolver;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -36,34 +36,32 @@ describe('AuthController', () => {
         UserModule,
         PassportModule,
         dbTestModule,
-        TypeOrmModule.forFeature([Users]),
+        TypeOrmModule.forFeature([UsersEntity]),
         JwtModule.register({
           secret: jwt_secret,
           signOptions: { expiresIn: '60s' },
         }),
       ],
-      controllers: [AuthController],
-      providers: [AuthService, JwtStrategy],
+      providers: [AuthService, JwtStrategy, UsersResolver, AuthResolver],
     }).compile();
 
-    userController = app.get<UserController>(UserController);
-    authController = app.get<AuthController>(AuthController);
+    usersResolver = app.get<UsersResolver>(UsersResolver);
+    authResolver = app.get<AuthResolver>(AuthResolver);
   });
 
   describe('auth', () => {
     it('register', async () => {
-      const res = await authController.register({
+      const res = await authResolver.register({
         login: testLogin,
         password: testPass,
       });
       expect(res).toBeTruthy();
 
-      //@ts-expect-error type
       userId = res.id;
     });
 
     it('login', async () => {
-      const res = await authController.login({
+      const res = await authResolver.login({
         login: testLogin,
         password: testPass,
       });

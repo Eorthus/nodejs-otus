@@ -1,23 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { Users } from '../entities/user.entity';
-import { Courses } from '../entities/course.entity';
+import { UsersEntity } from '../entities/user.entity';
+import { UserModel, UserModelInput } from '../models/user.model';
+import { CoursesEntity } from '../entities/course.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(Users)
-    private readonly usersRepository: Repository<Users>,
+    @InjectRepository(UsersEntity)
+    private readonly usersRepository: Repository<UsersEntity>,
   ) {}
 
-  async findAll(): Promise<Users[]> {
+  async findAll(): Promise<UsersEntity[]> {
     const data = await this.usersRepository.find();
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async createOne(item: Users): Promise<Users> {
+  async createOne(item: UserModel): Promise<UsersEntity> {
     const newItem = this.usersRepository.create(item);
 
     const data = await this.usersRepository.save(newItem);
@@ -25,7 +26,7 @@ export class UserService {
     return JSON.parse(JSON.stringify(data));
   }
 
-  async findOneById(id: Users['id']): Promise<Users> {
+  async findOneById(id: string): Promise<UsersEntity> {
     const data = await this.usersRepository.findOneBy({
       id,
     });
@@ -33,7 +34,7 @@ export class UserService {
     return JSON.parse(JSON.stringify(data));
   }
 
-  async findOne(login: Users['login']): Promise<Users> {
+  async findOne(login: UsersEntity['login']): Promise<UsersEntity> {
     const data = await this.usersRepository.findOneBy({
       login,
     });
@@ -41,22 +42,25 @@ export class UserService {
     return JSON.parse(JSON.stringify(data));
   }
 
-  async deleteOne(id: Users['id']): Promise<Users> {
+  async deleteOne(id: UsersEntity['id']): Promise<UsersEntity> {
     const data = await this.usersRepository.delete({ id });
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async updateOne(id: Users['id'], item: Users): Promise<Users> {
+  async updateOne(
+    id: UsersEntity['id'],
+    item: UserModelInput,
+  ): Promise<UsersEntity> {
     const data = await this.usersRepository.update(id, item);
 
     return JSON.parse(JSON.stringify(data));
   }
 
   async updateOwnCoursesOne(
-    id: Users['id'],
-    item: Courses['id'],
-  ): Promise<Users> {
+    id: UsersEntity['id'],
+    item: CoursesEntity['id'],
+  ): Promise<UsersEntity> {
     const foundedItem = await this.usersRepository.findOneBy({
       id,
     });
@@ -73,9 +77,9 @@ export class UserService {
   }
 
   async updateAvailableCoursesOne(
-    id: Users['id'],
-    item: Courses['id'],
-  ): Promise<Users> {
+    id: UsersEntity['id'],
+    item: CoursesEntity['id'],
+  ): Promise<UsersEntity> {
     const foundedItem = await this.usersRepository.findOneBy({
       id,
     });

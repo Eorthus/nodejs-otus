@@ -6,10 +6,10 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import { Comment, Lesson } from './other.entity';
+import { CommentEntity, LessonEntity } from './other.entity';
 
 @Entity()
-export class Category {
+export class CategoryEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,7 +21,7 @@ export class Category {
 }
 
 @Entity()
-export class Difficulty {
+export class DifficultyEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -33,7 +33,7 @@ export class Difficulty {
 }
 
 @Entity()
-export class Courses {
+export class CoursesEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
@@ -46,17 +46,17 @@ export class Courses {
   @Column('int', { array: true, default: [0] })
   rating?: number[];
 
-  @OneToOne(() => Category)
-  category?: Category;
+  @OneToOne(() => CategoryEntity)
+  category?: CategoryEntity;
 
-  @OneToOne(() => Difficulty)
-  difficulty?: Difficulty;
+  @OneToOne(() => DifficultyEntity)
+  difficulty?: DifficultyEntity;
 
-  @OneToMany(() => Lesson, (lesson) => lesson.course)
+  @OneToMany(() => LessonEntity, (lesson) => lesson.course)
   @JoinColumn()
-  lessons?: Lesson[];
+  lessons?: LessonEntity[];
 
-  @OneToMany(() => Comment, (comment) => comment.course)
+  @OneToMany(() => CommentEntity, (comment) => comment.course)
   @JoinColumn()
-  comments?: Comment[];
+  comments?: CommentEntity[];
 }

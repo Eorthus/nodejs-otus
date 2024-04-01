@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { Courses } from '../entities/course.entity';
-import { Comment } from 'src/entities/other.entity';
+import { CoursesEntity } from '../entities/course.entity';
+import { CourseModelInput, CommentModelInput } from '../models/course.model';
 import { UserService } from './user.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Users } from '../entities/user.entity';
+import { UsersEntity } from '../entities/user.entity';
 
 @Injectable()
 export class CourseService {
   constructor(
-    @InjectRepository(Courses)
-    private readonly coursesRepository: Repository<Courses>,
+    @InjectRepository(CoursesEntity)
+    private readonly coursesRepository: Repository<CoursesEntity>,
     private userService: UserService,
   ) {}
 
-  async findAll(): Promise<Courses[]> {
+  async findAll(): Promise<CoursesEntity[]> {
     const data = await this.coursesRepository.find();
     const items = JSON.parse(JSON.stringify(data));
 
@@ -34,7 +34,10 @@ export class CourseService {
     return items;
   }
 
-  async createOne(item: Courses, userId: Users['id']): Promise<Courses> {
+  async createOne(
+    item: CourseModelInput,
+    userId: UsersEntity['id'],
+  ): Promise<CoursesEntity> {
     const newItem = this.coursesRepository.create(item);
 
     const res = await this.coursesRepository.save(newItem);
@@ -47,7 +50,7 @@ export class CourseService {
     return { data, user };
   }
 
-  async findOne(id: Courses['id']): Promise<Courses> {
+  async findOne(id: string): Promise<CoursesEntity> {
     const data = await this.coursesRepository.findOneBy({
       id,
     });
@@ -65,19 +68,19 @@ export class CourseService {
     return item;
   }
 
-  async deleteOne(id: Courses['id']): Promise<Courses> {
+  async deleteOne(id: string): Promise<CoursesEntity> {
     const data = await this.coursesRepository.delete({ id });
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async updateOne(id: Courses['id'], item: Courses): Promise<Courses> {
+  async updateOne(id: string, item: CourseModelInput): Promise<CoursesEntity> {
     const data = await this.coursesRepository.update(id, item);
 
     return JSON.parse(JSON.stringify(data));
   }
 
-  async updateRatingOne(id: Courses['id'], item: number): Promise<Courses> {
+  async updateRatingOne(id: string, item: number): Promise<CoursesEntity> {
     const foundedItem = await this.coursesRepository.findOneBy({
       id,
     });
@@ -89,7 +92,10 @@ export class CourseService {
     return JSON.parse(JSON.stringify(data));
   }
 
-  async updateCommentOne(id: Courses['id'], item: Comment): Promise<Courses> {
+  async updateCommentOne(
+    id: string,
+    item: CommentModelInput,
+  ): Promise<CoursesEntity> {
     const foundedItem = await this.coursesRepository.findOneBy({
       id,
     });
@@ -97,7 +103,7 @@ export class CourseService {
     if (!foundedItem.comments?.length) {
       foundedItem.comments = [];
     }
-
+    //@ts-expect-error type
     foundedItem.comments.push(item);
 
     const data = await this.coursesRepository.save(foundedItem);

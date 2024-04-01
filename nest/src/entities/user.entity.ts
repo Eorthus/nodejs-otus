@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Role } from '../auth/roles.decorator';
 
 @Entity()
-export class Roles {
+export class RolesEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,7 +14,7 @@ export class Roles {
 }
 
 @Entity()
-export class Users {
+export class UsersEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
@@ -27,8 +27,8 @@ export class Users {
   @Column()
   refreshToken: string;
 
-  @OneToMany(() => Roles, (role) => role.id)
-  roles?: Roles[];
+  @OneToMany(() => RolesEntity, (role) => role.id)
+  roles?: RolesEntity[];
 
   @Column('text', { array: true, default: [] })
   ownCourses?: string[];

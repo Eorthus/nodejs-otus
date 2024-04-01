@@ -1,0 +1,154 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""category"""
+type Category {
+  id: ID!
+  name: String!
+  title: String!
+}
+
+"""categoryInput"""
+input CategoryInput {
+  name: String!
+  title: String!
+}
+
+"""comment"""
+type Comment {
+  author: String!
+  date: DateTime!
+  description: String!
+  id: ID!
+}
+
+"""commentInput"""
+input CommentInput {
+  author: String!
+  date: DateTime!
+  description: String!
+}
+
+"""course """
+type Course {
+  category: Category!
+  comments: [Comment!]!
+  description: String!
+  difficulty: Difficulty!
+  id: ID!
+  lessons: [Lesson!]!
+  rating: [Float!]!
+  title: String!
+}
+
+"""courseInput """
+input CourseInput {
+  category: CategoryInput!
+  comments: [CommentInput!]!
+  description: String!
+  difficulty: DifficultyInput!
+  lessons: [LessonInput!]!
+  rating: [Float!]!
+  title: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""difficulty"""
+type Difficulty {
+  id: ID!
+  name: String!
+  title: String!
+}
+
+"""difficultyInput"""
+input DifficultyInput {
+  name: String!
+  title: String!
+}
+
+"""lessons"""
+type Lesson {
+  attached: [String!]!
+  description: String!
+  id: ID!
+  title: String!
+  video: String!
+}
+
+"""lessonsInput"""
+input LessonInput {
+  attached: [String!]!
+  description: String!
+  title: String!
+  video: String!
+}
+
+type Mutation {
+  addCourse(form: CourseInput!, userId: String!): Course!
+  login(form: UserInput!): Token!
+  logout(form: UserInput!): User!
+  register(form: UserInput!): User!
+  removeCourse(id: String!): Course!
+  token(form: UserInput!): Token!
+  updateCommentCourse(form: CommentInput!, id: String!): Course!
+  updateCourse(form: CourseInput!, id: String!): Course!
+  updateRatingCourse(form: RatingInput!, id: String!): Course!
+  updateUser(form: UserInput!, id: String!): User!
+  updateUserAvailableCourses(courseId: String!, id: String!): User!
+}
+
+type Query {
+  course(id: String!): Course!
+  courses: [Course!]!
+  user(id: String!): User!
+  users: [User!]!
+}
+
+"""ratingInput"""
+input RatingInput {
+  rating: Float!
+}
+
+"""roles"""
+type Roles {
+  id: ID!
+  name: String!
+  title: String!
+}
+
+"""rolesInput"""
+input RolesInput {
+  name: String!
+  title: String!
+}
+
+"""token"""
+type Token {
+  access_token: String!
+}
+
+"""user"""
+type User {
+  availableCourses: [String!]
+  id: ID!
+  login: String!
+  ownCourses: [String!]
+  password: String!
+  refreshToken: String!
+  roles: [Roles!]
+}
+
+"""userInput"""
+input UserInput {
+  availableCourses: [String!]
+  login: String!
+  ownCourses: [String!]
+  password: String!
+  refreshToken: String
+  roles: [RolesInput!]
+}

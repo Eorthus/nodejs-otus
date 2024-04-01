@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Courses } from './course.entity';
+import { CoursesEntity } from './course.entity';
 
 @Entity()
-export class Comment {
+export class CommentEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -15,12 +15,12 @@ export class Comment {
   @Column()
   description: string;
 
-  @ManyToOne(() => Courses, (course) => course.comments)
-  course: Courses;
+  @ManyToOne(() => CoursesEntity, (course) => course.comments)
+  course: CoursesEntity;
 }
 
 @Entity()
-export class Lesson {
+export class LessonEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -36,6 +36,6 @@ export class Lesson {
   @Column('bytea', { array: true })
   attached: unknown[];
 
-  @ManyToOne(() => Courses, (course) => course.lessons)
-  course: Courses;
+  @ManyToOne(() => CoursesEntity, (course) => course.lessons)
+  course: CoursesEntity;
 }
