@@ -53,9 +53,9 @@ export class AuthResolver {
     const refreshToken = crypto.randomBytes(64).toString('hex');
 
     // Create and save the new user
-    //@ts-expect-error type
     const newUser = await this.userService.createOne({
       login,
+      //@ts-expect-error type
       password: hashedPassword,
       refreshToken,
     });

@@ -3,53 +3,53 @@
 # ------------------------------------------------------
 
 """category"""
-type Category {
+type CategoryModel {
   id: ID!
   name: String!
   title: String!
 }
 
 """categoryInput"""
-input CategoryInput {
+input CategoryModelInput {
   name: String!
   title: String!
 }
 
 """comment"""
-type Comment {
+type CommentModel {
   author: String!
   date: DateTime!
-  description: String!
+  description: String
   id: ID!
 }
 
 """commentInput"""
-input CommentInput {
+input CommentModelInput {
   author: String!
   date: DateTime!
-  description: String!
+  description: String
 }
 
 """course """
-type Course {
-  category: Category!
-  comments: [Comment!]!
-  description: String!
-  difficulty: Difficulty!
+type CourseModel {
+  category: CategoryModel
+  comments: [CommentModel!]
+  description: String
+  difficulty: DifficultyModel
   id: ID!
-  lessons: [Lesson!]!
-  rating: [Float!]!
+  lessons: [LessonModel!]
+  rating: [Float!]
   title: String!
 }
 
 """courseInput """
-input CourseInput {
-  category: CategoryInput!
-  comments: [CommentInput!]!
-  description: String!
-  difficulty: DifficultyInput!
-  lessons: [LessonInput!]!
-  rating: [Float!]!
+input CourseModelInput {
+  category: CategoryModelInput
+  comments: [CommentModelInput!]
+  description: String
+  difficulty: DifficultyModelInput
+  lessons: [LessonModelInput!]
+  rating: [Float!]
   title: String!
 }
 
@@ -59,96 +59,94 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 """difficulty"""
-type Difficulty {
+type DifficultyModel {
   id: ID!
   name: String!
   title: String!
 }
 
 """difficultyInput"""
-input DifficultyInput {
+input DifficultyModelInput {
   name: String!
   title: String!
 }
 
 """lessons"""
-type Lesson {
-  attached: [String!]!
-  description: String!
+type LessonModel {
+  attached: [String!]
+  description: String
   id: ID!
   title: String!
-  video: String!
+  video: String
 }
 
 """lessonsInput"""
-input LessonInput {
-  attached: [String!]!
-  description: String!
+input LessonModelInput {
+  attached: [String!]
+  description: String
   title: String!
-  video: String!
+  video: String
 }
 
 type Mutation {
-  addCourse(form: CourseInput!, userId: String!): Course!
-  login(form: UserInput!): Token!
-  logout(form: UserInput!): User!
-  register(form: UserInput!): User!
-  removeCourse(id: String!): Course!
-  token(form: UserInput!): Token!
-  updateCommentCourse(form: CommentInput!, id: String!): Course!
-  updateCourse(form: CourseInput!, id: String!): Course!
-  updateRatingCourse(form: RatingInput!, id: String!): Course!
-  updateUser(form: UserInput!, id: String!): User!
-  updateUserAvailableCourses(courseId: String!, id: String!): User!
+  addCourse(form: CourseModelInput!, userId: String!): CourseModel!
+  login(form: UserModelInput!): TokenModel!
+  logout(form: UserModelInput!): UserModel!
+  register(form: UserModelInput!): UserModel!
+  removeCourse(id: String!): CourseModel!
+  token(form: UserModelInput!): TokenModel!
+  updateCommentCourse(form: CommentModelInput!, id: String!): CourseModel!
+  updateCourse(form: CourseModelInput!, id: String!): CourseModel!
+  updateRatingCourse(form: RatingModelInput!, id: String!): CourseModel!
+  updateUser(form: UserModelInput!, id: String!): UserModel!
+  updateUserAvailableCourses(courseId: String!, id: String!): UserModel!
 }
 
 type Query {
-  course(id: String!): Course!
-  courses: [Course!]!
-  user(id: String!): User!
-  users: [User!]!
+  course(id: String!): CourseModel!
+  courses: [CourseModel!]!
+  user(id: String!): UserModel!
+  users: [UserModel!]!
 }
 
 """ratingInput"""
-input RatingInput {
+input RatingModelInput {
   rating: Float!
 }
 
 """roles"""
-type Roles {
+type RolesModel {
   id: ID!
   name: String!
   title: String!
 }
 
 """rolesInput"""
-input RolesInput {
+input RolesModelInput {
   name: String!
   title: String!
 }
 
 """token"""
-type Token {
+type TokenModel {
   access_token: String!
 }
 
 """user"""
-type User {
+type UserModel {
   availableCourses: [String!]
   id: ID!
   login: String!
   ownCourses: [String!]
-  password: String!
-  refreshToken: String!
-  roles: [Roles!]
+  roles: [RolesModel!]
 }
 
 """userInput"""
-input UserInput {
+input UserModelInput {
   availableCourses: [String!]
   login: String!
   ownCourses: [String!]
   password: String!
   refreshToken: String
-  roles: [RolesInput!]
+  roles: [RolesModelInput!]
 }

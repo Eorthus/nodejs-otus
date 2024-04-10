@@ -35,7 +35,7 @@ export class CommentModel {
   @Field()
   date: Date;
 
-  @Field()
+  @Field({ nullable: true })
   description: string;
 }
 
@@ -47,13 +47,13 @@ export class LessonModel {
   @Field()
   title: string;
 
-  @Field()
+  @Field({ nullable: true })
   description: string;
 
-  @Field()
+  @Field({ nullable: true })
   video: string;
 
-  @Field(() => [String])
+  @Field(() => [String], { nullable: true })
   attached: string[];
 }
 
@@ -65,23 +65,23 @@ export class CourseModel {
   @Field()
   title: string;
 
-  @Field()
-  description?: string;
+  @Field({ nullable: true })
+  description: string;
 
-  @Field(() => [Number])
-  rating?: number[];
+  @Field(() => [Number], { nullable: true })
+  rating: number[];
 
-  @Field()
-  category?: CategoryModel;
+  @Field({ nullable: true })
+  category: CategoryModel;
 
-  @Field()
-  difficulty?: DifficultyModel;
+  @Field({ nullable: true })
+  difficulty: DifficultyModel;
 
-  @Field(() => [LessonModel])
-  lessons?: LessonModel[];
+  @Field(() => [LessonModel], { nullable: true })
+  lessons: LessonModel[];
 
-  @Field(() => [CommentModel])
-  comments?: CommentModel[];
+  @Field(() => [CommentModel], { nullable: true })
+  comments: CommentModel[];
 }
 
 // inputs
@@ -112,7 +112,7 @@ export class CommentModelInput {
   @Field()
   date: Date;
 
-  @Field()
+  @Field({ nullable: true })
   description: string;
 }
 
@@ -121,13 +121,13 @@ export class LessonModelInput {
   @Field()
   title: string;
 
-  @Field()
+  @Field({ nullable: true })
   description: string;
 
-  @Field()
+  @Field({ nullable: true })
   video: string;
 
-  @Field(() => [String])
+  @Field(() => [String], { nullable: true })
   attached: string[];
 }
 
@@ -136,23 +136,23 @@ export class CourseModelInput {
   @Field()
   title: string;
 
-  @Field()
-  description?: string;
+  @Field({ nullable: true })
+  description: string;
 
-  @Field(() => [Number])
-  rating?: number[];
+  @Field(() => [Number], { nullable: true })
+  rating: number[];
 
-  @Field()
-  category?: CategoryModelInput;
+  @Field({ nullable: true })
+  category: CategoryModelInput;
 
-  @Field()
-  difficulty?: DifficultyModelInput;
+  @Field({ nullable: true })
+  difficulty: DifficultyModelInput;
 
-  @Field(() => [LessonModelInput])
-  lessons?: LessonModelInput[];
+  @Field(() => [LessonModelInput], { nullable: true })
+  lessons: LessonModelInput[];
 
-  @Field(() => [CommentModelInput])
-  comments?: CommentModelInput[];
+  @Field(() => [CommentModelInput], { nullable: true })
+  comments: CommentModelInput[];
 }
 
 @InputType({ description: 'ratingInput' })

@@ -27,20 +27,14 @@ export class UserModel {
   @Field()
   login: string;
 
-  @Field()
-  password: string;
-
-  @Field()
-  refreshToken: string;
-
   @Field(() => [RolesModel], { nullable: true })
-  roles?: RolesModel[];
+  roles: RolesModel[];
 
   @Field(() => [String], { nullable: true })
-  ownCourses?: string[];
+  ownCourses: string[];
 
   @Field(() => [String], { nullable: true })
-  availableCourses?: string[];
+  availableCourses: string[];
 }
 
 @InputType({ description: 'rolesInput' })
@@ -61,14 +55,14 @@ export class UserModelInput {
   password: string;
 
   @Field({ nullable: true })
-  refreshToken?: string;
+  refreshToken: string;
 
   @Field(() => [RolesModelInput], { nullable: true })
-  roles?: RolesModelInput[];
+  roles: RolesModelInput[];
 
   @Field(() => [String], { nullable: true })
-  ownCourses?: string[];
+  ownCourses: string[];
 
   @Field(() => [String], { nullable: true })
-  availableCourses?: string[];
+  availableCourses: string[];
 }
