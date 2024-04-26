@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
+    network_mode: host
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: courses
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 0000
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      
+  app:
+    depends_on:
+      - postgres
+    build: .
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - '8080:8080'
+    stdin_open: true
+    tty: true
+
+volumes:
+  postgres_data:

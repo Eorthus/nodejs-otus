@@ -2,10 +2,12 @@
   "name": "courses-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "./src/server.ts",
   "scripts": {
     "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
-    "dev": "nodemon ./src/server.ts"
+    "dev": "nodemon ./src/server.ts",
+    "build": "npx tsc",
+    "start": "node ./build/server.js"
   },
   "keywords": [],
   "author": "",
@@ -41,6 +43,7 @@
     "passport-jwt": "^4.0.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
   }
 }
